@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StyleMatch: Discover Your Perfect Outfit</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <style>
+    /* Tambahkan gaya CSS custom di sini jika diperlukan */
+    body {
+      font-family: 'Arial', sans-serif;
+    }
+
+    button {
+      cursor: pointer;
+    }
+    /* Custom Color Block Styles */
+    .bg-terra-cotta { background-color: #E27D60; }
+    .bg-mustard { background-color: #F9D56E; }
+    .bg-olive { background-color: #3F6B47; }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans">
+
+  <!-- Navigation Bar -->
+  <header class="bg-blue-600 p-4 text-white text-center">
+    <h1 class="text-3xl">Selamat datang di StyleMatch!</h1>
+    <p class="text-lg">Temukan dan jelajahi outfit yang cocok untukmu disini!</p>
+  </header>
+
+  <!-- Main Section -->
+  <main class="mt-8 px-4">
+    <div class="bg-white p-6 shadow-lg rounded-md max-w-lg mx-auto">
+      <h2 class="text-2xl font-semibold mb-4 text-center">Pilih Kriteria Untuk Rekomendasi Outfit</h2>
+
+      <!-- Gender Selection -->
+      <div class="mb-6">
+        <label for="gender" class="block text-lg font-medium">Pilih Gender:</label>
+        <select id="gender" class="w-full p-2 mt-2 border border-gray-300 rounded-md">
+          <option value="female">Perempuan</option>
+          <option value="male">Laki-laki</option>
+        </select>
+      </div>
+
+      <!-- Skin Tone Selection -->
+      <div class="mb-6">
+        <label for="skinTone" class="block text-lg font-medium">Pilih Warna Kulit:</label>
+        <select id="skinTone" class="w-full p-2 mt-2 border border-gray-300 rounded-md">
+          <option value="putih">Putih</option>
+          <option value="kuning langsat">Kuning Langsat</option>
+          <option value="sawo matang">Sawo Matang</option>
+          <option value="gelap">Gelap</option>
+        </select>
+      </div>
+
+      <!-- Occasion Selection -->
+      <div class="mb-6">
+        <label for="occasion" class="block text-lg font-medium">Pilih Event:</label>
+        <select id="occasion" class="w-full p-2 mt-2 border border-gray-300 rounded-md">
+          <option value="kasual">Kasual</option>
+          <option value="formal">Formal</option>
+          <option value="hangout">Hangout</option>
+          <option value="kampus/sekolah">Kampus/Sekolah</option>
+        </select>
+      </div>
+
+      <!-- Recommendation Button -->
+      <button id="recommendBtn" class="w-full p-2 bg-blue-600 text-white rounded-md mt-4">Lihat Rekomendasi</button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 p-4 text-white text-center mt-8">
+    <p>&copy; 2025 StyleMatch. All Rights Reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById("recommendBtn").addEventListener("click", function() {
+      const gender = document.getElementById("gender").value;
+      const skinTone = document.getElementById("skinTone").value;
+      const occasion = document.getElementById("occasion").value;
+
+      const result = getOutfit(gender, skinTone, occasion);
+
+      // Menampilkan hasil rekomendasi
+      alert(`👕 Gaya: ${result.style}\n🎨 Warna cocok: ${result.colors.join(", ")}\n🧢 Outfit: ${result.outfit}`);
+    });
+
+    function getOutfit(gender, skinTone, occasion) {
+      if (gender === "male" && skinTone === "sawo matang" && occasion === "kasual") {
+        return {
+          style: "Casual Streetwear",
+          colors: ["olive green", "cream", "denim"],
+          outfit: "Kaos oversized, jeans biru, sneakers putih"
+        };
+      } else if (gender === "female" && skinTone === "putih" && occasion === "formal") {
+        return {
+          style: "Minimalist Formal",
+          colors: ["navy", "beige", "black"],
+          outfit: "Blouse polos, midi skirt, heels netral"
+        };
+      } else {
+        return {
+          style: "Universal Style",
+          colors: ["white", "black", "grey"],
+          outfit: "Outfit netral yang cocok untuk semua warna kulit"
+        };
+      }
+    }
+  </script>
+
+  <!-- Style Dictionary Page -->
+  <section id="style-dictionary" class="p-6 bg-gray-100 mt-12">
+    <h2 class="text-2xl font-semibold mb-4 text-center">Style Dictionary</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Vintage Style Card -->
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <img src="https://via.placeholder.com/150" alt="Vintage Style" class="w-full h-48 object-cover rounded-md">
+        <h3 class="text-xl font-semibold mt-4">Vintage</h3>
+        <p class="text-gray-600">Ciri khas gaya klasik dengan warna warm dan potongan retro.</p>
+      </div>
+      <!-- Minimalist Style Card -->
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <img src="https://via.placeholder.com/150" alt="Minimalist Style" class="w-full h-48 object-cover rounded-md">
+        <h3 class="text-xl font-semibold mt-4">Minimalist</h3>
+        <p class="text-gray-600">Gaya yang sederhana, clean, dan fokus pada potongan yang tajam.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Color Harmony Page -->
+  <section id="color-harmony" class="p-6 bg-gray-100 mt-12">
+    <h2 class="text-2xl font-semibold mb-4 text-center">Colour Harmony</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="bg-terra-cotta p-4 rounded-lg shadow-lg text-center text-white">🟤 Terracotta</div>
+      <div class="bg-mustard p-4 rounded-lg shadow-lg text-center text-white">🟡 Mustard</div>
+      <div class="bg-olive p-4 rounded-lg shadow-lg text-center text-white">🟩 Olive</div>
+      <div class="bg-white p-4 rounded-lg shadow-lg text-center text-gray-800">🤍 Cream</div>
+    </div>
+  </section>
+
+</body>
+</html>
